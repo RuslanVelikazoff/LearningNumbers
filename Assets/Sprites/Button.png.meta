@@ -129,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ClearButtonSprite
+      name: ClearBigButtonBlueSprite
       rect:
         serializedVersion: 2
         x: 169
@@ -242,7 +242,7 @@ TextureImporter:
         width: 183
         height: 183
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -263,7 +263,7 @@ TextureImporter:
         width: 183
         height: 183
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -284,7 +284,7 @@ TextureImporter:
         width: 183
         height: 183
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -292,6 +292,69 @@ TextureImporter:
       bones: []
       spriteID: 4a9823c2c70c740d3a20a9d528e4dae2
       internalID: 1091844781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearSmallButtonSprite
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 2187
+        width: 183
+        height: 183
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86e55435a0a674d8eae0e9e45a7688d9
+      internalID: 333439169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearBigButtonGreenSprite
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 2421
+        width: 426
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ab988cc9c0f84a4690422a6a99b965e
+      internalID: 1539713683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearBigButtonRedSprite
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 2419
+        width: 431
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f7c053f87bfc4a60940d6d0f95e0557
+      internalID: 619924040
       vertices: []
       indices: 
       edges: []
@@ -307,7 +370,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ClearButtonSprite: -261203020
+      ClearBigButtonBlueSprite: -261203020
+      ClearBigButtonGreenSprite: 1539713683
+      ClearBigButtonRedSprite: 619924040
+      ClearSmallButtonSprite: 333439169
       ExitSprite: 1091844781
       OffMusicSprite: 377815536
       OffSoundsSprite: -1887430974
