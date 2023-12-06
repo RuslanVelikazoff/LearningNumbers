@@ -59,6 +59,8 @@ public class AudioManager : MonoBehaviour
                 s.source.Volume = s.volume = PlayerPrefs.GetFloat("SoundVolume");
             }
         }
+
+        PlayMusic("Music");
     }
 
     public void PlaySound(string name)

@@ -12,4 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4645132edefd4c74968a0c941a98fb89, type: 3}
   m_Name: Audio Database
   m_EditorClassIdentifier: 
-  _items: []
+  _items:
+  - Clip: {fileID: 8300000, guid: 5712789159d734b49baa3dde57bb9d89, type: 3}
+    Key: Music
+    FolderPath: Sounds/
+    Name: Music.mp3
+    Preload: 1
+    _id: a8849081-26f2-43e6-9cc8-9956dc91db3b
+  - Clip: {fileID: 8300000, guid: 1832b992affce46cfa7b0856785dcb32, type: 3}
+    Key: Click
+    FolderPath: Sounds/
+    Name: Click.mp3
+    Preload: 1
+    _id: 141024ec-5ff3-427f-9de4-bd52a225fa02
