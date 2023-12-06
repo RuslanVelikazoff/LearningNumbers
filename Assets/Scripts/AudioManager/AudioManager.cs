@@ -14,6 +14,9 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        sourceMusic = GameObject.FindGameObjectWithTag("SourceMusic").GetComponent<SourceAudio>();
+        sourceSounds = GameObject.FindGameObjectWithTag("SourceSound").GetComponent<SourceAudio>();
+
         #region SINGLETON
 
         if (Instance == null)
