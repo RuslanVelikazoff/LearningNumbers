@@ -25,3 +25,15 @@ MonoBehaviour:
     Name: Click.mp3
     Preload: 1
     _id: 141024ec-5ff3-427f-9de4-bd52a225fa02
+  - Clip: {fileID: 8300000, guid: 2012f58e053a84235baf6b6c79aa9300, type: 3}
+    Key: Win
+    FolderPath: Sounds/
+    Name: Win.mp3
+    Preload: 1
+    _id: c65db89f-5444-4bec-b54f-3fcb8eaec676
+  - Clip: {fileID: 8300000, guid: 7d0a144002c4b47d68f3a08f8a1b7bcf, type: 3}
+    Key: Lose
+    FolderPath: Sounds/
+    Name: Lose.mp3
+    Preload: 1
+    _id: de88aad6-823e-4c89-81e9-51780b70e9a0

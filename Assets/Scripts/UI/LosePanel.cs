@@ -15,6 +15,8 @@ public class LosePanel : MonoBehaviour
     [SerializeField]
     private Button exitButton;
 
+    private AnimationUI animations = new AnimationUI();
+
     private void Start()
     {
         ButtonClickAction();
@@ -22,9 +24,8 @@ public class LosePanel : MonoBehaviour
 
     public void OpenPanel()
     {
-        //TODO: add animations
-        panelObject.SetActive(true);
-        losePanel.SetActive(true);
+        AudioManager.Instance.PlaySound("Lose");
+        animations.OpenPanel(panelObject, losePanel);
     }
 
     private void ButtonClickAction()

@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private LosePanel losePanel;
 
+    private AnimationUI animations = new AnimationUI();
+
     private void Start()
     {
         RandomExercise();
@@ -63,6 +65,8 @@ public class GameManager : MonoBehaviour
             numberButton[index].onClick.RemoveAllListeners();
             numberButton[index].onClick.AddListener(() =>
             {
+                animations.Click(numberButton[index]);
+
                 if (index == exercise)
                 {
                     winPanel.OpenPanel();

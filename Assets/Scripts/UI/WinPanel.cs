@@ -15,6 +15,8 @@ public class WinPanel : MonoBehaviour
     [SerializeField]
     private Button exitButton;
 
+    private AnimationUI animations = new AnimationUI();
+
     private void Start()
     {
         ButtonClickAction();
@@ -22,9 +24,8 @@ public class WinPanel : MonoBehaviour
 
     public void OpenPanel()
     {
-        //TODO: add animations
-        panelObject.SetActive(true);
-        winPanel.SetActive(true);
+        AudioManager.Instance.PlaySound("Win");
+        animations.OpenPanel(panelObject, winPanel);
     }
 
     private void ButtonClickAction()

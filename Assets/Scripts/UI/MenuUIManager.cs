@@ -25,6 +25,8 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField]
     private Sprite soundOffSprite;
 
+    private AnimationUI animations = new AnimationUI();
+
     private void Start()
     {
         SetSprites();
@@ -39,7 +41,6 @@ public class MenuUIManager : MonoBehaviour
             playButton.onClick.RemoveAllListeners();
             playButton.onClick.AddListener(() =>
             {
-                AudioManager.Instance.PlaySound("Click");
                 SceneManager.LoadScene(1);
             });
         }
@@ -49,7 +50,7 @@ public class MenuUIManager : MonoBehaviour
             musicButton.onClick.RemoveAllListeners();
             musicButton.onClick.AddListener(() =>
             {
-                AudioManager.Instance.PlaySound("Click");
+                animations.Click(musicButton);
 
                 if (PlayerPrefs.GetFloat("MusicVolume") == 1f)
                 {
@@ -69,7 +70,7 @@ public class MenuUIManager : MonoBehaviour
             soundButton.onClick.RemoveAllListeners();
             soundButton.onClick.AddListener(() =>
             {
-                AudioManager.Instance.PlaySound("Click");
+                animations.Click(soundButton);
 
                 if (PlayerPrefs.GetFloat("SoundVolume") == 1f)
                 {

@@ -32,6 +32,8 @@ public class LevelUIManager : MonoBehaviour
     [SerializeField]
     private Sprite soundOffSprite;
 
+    private AnimationUI animations = new AnimationUI();
+
     private void Start()
     {
         ButtonClickAction();
@@ -46,7 +48,6 @@ public class LevelUIManager : MonoBehaviour
             exitButton.onClick.RemoveAllListeners();
             exitButton.onClick.AddListener(() =>
             {
-                AudioManager.Instance.PlaySound("Click");
                 SceneManager.LoadScene(0);
             });
         }
@@ -65,7 +66,7 @@ public class LevelUIManager : MonoBehaviour
             settingsButton.onClick.RemoveAllListeners();
             settingsButton.onClick.AddListener(() =>
             {
-                AudioManager.Instance.PlaySound("Click");
+                animations.Click(settingsButton);
 
                 if (settingsPanel.activeInHierarchy)
                 {
@@ -82,7 +83,7 @@ public class LevelUIManager : MonoBehaviour
             musicButton.onClick.RemoveAllListeners();
             musicButton.onClick.AddListener(() =>
             {
-                AudioManager.Instance.PlaySound("Click");
+                animations.Click(musicButton);
 
                 if (PlayerPrefs.GetFloat("MusicVolume") == 1f)
                 {
@@ -101,7 +102,7 @@ public class LevelUIManager : MonoBehaviour
             soundButton.onClick.RemoveAllListeners();
             soundButton.onClick.AddListener(() =>
             {
-                AudioManager.Instance.PlaySound("Click");
+                animations.Click(soundButton);
 
                 if (PlayerPrefs.GetFloat("SoundVolume") == 1f)
                 {
