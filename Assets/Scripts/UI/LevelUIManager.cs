@@ -6,8 +6,6 @@ public class LevelUIManager : MonoBehaviour
 {
     [SerializeField]
     private Button exitButton;
-    [SerializeField]
-    private Button restartButton;
 
     [Space(7)]
 
@@ -49,15 +47,6 @@ public class LevelUIManager : MonoBehaviour
             exitButton.onClick.AddListener(() =>
             {
                 SceneManager.LoadScene(0);
-            });
-        }
-        if (restartButton != null)
-        {
-            restartButton.onClick.RemoveAllListeners();
-            restartButton.onClick.AddListener(() =>
-            {
-                AudioManager.Instance.PlaySound("Click");
-                SceneManager.LoadScene(1);
             });
         }
 
