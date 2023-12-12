@@ -30,6 +30,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private LosePanel losePanel;
 
+    [Space(7)]
+
+    [SerializeField]
+    private Text scoreText;
+
     private int correctButton;
 
     private int randomNumber;
@@ -38,10 +43,15 @@ public class GameManager : MonoBehaviour
     private string text1;
     private string text2;
 
+    private int score;
+
     private AnimationUI animations = new AnimationUI();
 
     private void Awake()
     {
+        score = PlayerPrefs.GetInt("Score");
+        scoreText.text = "Количество правильных ответов: " + score.ToString();
+
         SetCorrectRandomButton();
         SetRandomAnimal();
         SetRandomNumber();
@@ -296,6 +306,7 @@ public class GameManager : MonoBehaviour
                         animations.Click(numberButton[0]);
 
                         winPanel.OpenPanel();
+                        AddScore();
                     });
                 }
                 if (numberButton[1] != null)
@@ -306,6 +317,7 @@ public class GameManager : MonoBehaviour
                         animations.Click(numberButton[1]);
 
                         losePanel.OpenPanel();
+                        PlayerPrefs.SetInt("Score", 0);
                     });
                 }
                 if (numberButton[2] != null)
@@ -316,6 +328,7 @@ public class GameManager : MonoBehaviour
                         animations.Click(numberButton[2]);
 
                         losePanel.OpenPanel();
+                        PlayerPrefs.SetInt("Score", 0);
                     });
                 }
                 break;
@@ -332,6 +345,7 @@ public class GameManager : MonoBehaviour
                         animations.Click(numberButton[0]);
 
                         losePanel.OpenPanel();
+                        PlayerPrefs.SetInt("Score", 0);
                     });
                 }
                 if (numberButton[1] != null)
@@ -342,6 +356,7 @@ public class GameManager : MonoBehaviour
                         animations.Click(numberButton[1]);
 
                         winPanel.OpenPanel();
+                        AddScore();
                     });
                 }
                 if (numberButton[2] != null)
@@ -352,6 +367,7 @@ public class GameManager : MonoBehaviour
                         animations.Click(numberButton[2]);
 
                         losePanel.OpenPanel();
+                        PlayerPrefs.SetInt("Score", 0);
                     });
                 }
                 break;
@@ -368,6 +384,7 @@ public class GameManager : MonoBehaviour
                         animations.Click(numberButton[0]);
 
                         losePanel.OpenPanel();
+                        PlayerPrefs.SetInt("Score", 0);
                     });
                 }
                 if (numberButton[1] != null)
@@ -378,6 +395,7 @@ public class GameManager : MonoBehaviour
                         animations.Click(numberButton[1]);
 
                         losePanel.OpenPanel();
+                        PlayerPrefs.SetInt("Score", 0);
                     });
                 }
                 if (numberButton[2] != null)
@@ -388,10 +406,21 @@ public class GameManager : MonoBehaviour
                         animations.Click(numberButton[2]);
 
                         winPanel.OpenPanel();
+                        AddScore();
                     });
                 }
                 break;
         }
     }
 
+
+    private void AddScore()
+    {
+        PlayerPrefs.SetInt("Score", score + 1);
+
+        if (PlayerPrefs.GetInt("Score") >= PlayerPrefs.GetInt("Record"))
+        {
+            PlayerPrefs.SetInt("Record", PlayerPrefs.GetInt("Score"));
+        }
+    }
 }

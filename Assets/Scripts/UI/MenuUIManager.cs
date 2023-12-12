@@ -25,11 +25,17 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField]
     private Sprite soundOffSprite;
 
+    [Space(7)]
+
+    [SerializeField]
+    private Text recordText;
+
     private AnimationUI animations = new AnimationUI();
 
     private void Start()
     {
         SetSprites();
+        SetRecordText();
 
         ButtonClickAction();
     }
@@ -104,6 +110,19 @@ public class MenuUIManager : MonoBehaviour
         else
         {
             soundButton.GetComponent<Image>().sprite = soundOffSprite;
+        }
+    }
+
+    private void SetRecordText()
+    {
+        if (!PlayerPrefs.HasKey("Record"))
+        {
+            PlayerPrefs.SetInt("Record", 0);
+            recordText.text = "Рекорд: " + PlayerPrefs.GetInt("Record").ToString();
+        }
+        else
+        {
+            recordText.text = "Рекорд: " + PlayerPrefs.GetInt("Record").ToString();
         }
     }
 }
