@@ -1,23 +1,15 @@
+using System;
 using UnityEngine;
-using Plugins.Audio.Core;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField]
-    private SourceAudio sourceSounds;
-    [SerializeField]
-    private SourceAudio sourceMusic;
-
     public Sound[] sounds;
 
     public static AudioManager Instance;
 
     private void Awake()
     {
-        sourceMusic = GameObject.FindGameObjectWithTag("SourceMusic").GetComponent<SourceAudio>();
-        sourceSounds = GameObject.FindGameObjectWithTag("SourceSound").GetComponent<SourceAudio>();
-
-        #region SINGLETON
+        #region Singleton
 
         if (Instance == null)
         {
@@ -36,44 +28,36 @@ public class AudioManager : MonoBehaviour
 
         foreach (Sound s in sounds)
         {
-            if (s.name == "Music")
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+
+            s.source.volume = s.volume = PlayerPrefs.GetFloat("SoundVolume");
+
+            s.source.loop = s.loop;
+
+            if (s.name == "Theme")
             {
-                s.source = sourceMusic;
-            }
-            else
-            {
-                s.source = sourceSounds;
+                s.source.volume = s.volume = PlayerPrefs.GetFloat("MusicVolume");
             }
         }
     }
 
     private void Start()
     {
-        foreach (Sound s in sounds)
+        Play("Theme");
+    }
+
+    public void Play(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+
+        if (s == null)
         {
-            if (s.name == "Music")
-            {
-                s.source.Loop = s.loop;
-                s.source.Volume = s.volume = PlayerPrefs.GetFloat("MusicVolume");
-            }
-            else
-            {
-                s.source.Loop = s.loop;
-                s.source.Volume = s.volume = PlayerPrefs.GetFloat("SoundVolume");
-            }
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
         }
 
-        PlayMusic("Music");
-    }
-
-    public void PlaySound(string name)
-    {
-        sourceSounds.Play(name);
-    }
-
-    public void PlayMusic(string name)
-    {
-        sourceMusic.Play(name);
+        s.source.Play();
     }
 
     private void SetVolume()
@@ -82,22 +66,10 @@ public class AudioManager : MonoBehaviour
         {
             PlayerPrefs.SetFloat("MusicVolume", 1f);
         }
+
         if (!PlayerPrefs.HasKey("SoundVolume"))
         {
             PlayerPrefs.SetFloat("SoundVolume", 1f);
-        }
-    }
-
-    public void OnMusic()
-    {
-        PlayerPrefs.SetFloat("MusicVolume", 1f);
-
-        foreach (Sound s in sounds)
-        {
-            if (s.name == "Music")
-            {
-                s.source.Volume = s.volume = PlayerPrefs.GetFloat("MusicVolume");
-            }
         }
     }
 
@@ -107,35 +79,56 @@ public class AudioManager : MonoBehaviour
 
         foreach (Sound s in sounds)
         {
-            if (s.name == "Music")
+            if (s.name == "Theme")
             {
-                s.source.Volume = s.volume = PlayerPrefs.GetFloat("MusicVolume");
+                s.source.volume = s.volume = PlayerPrefs.GetFloat("MusicVolume");
             }
         }
     }
 
-    public void OnSounds()
+    public void OnMusic()
     {
-        PlayerPrefs.SetFloat("SoundVolume", 1f);
+        PlayerPrefs.SetFloat("MusicVolume", 1f);
 
         foreach (Sound s in sounds)
         {
-            if (s.name != "Music")
+            if (s.name == "Theme")
             {
-                s.source.Volume = s.volume = PlayerPrefs.GetFloat("SoundVolume");
+                s.source.volume = s.volume = PlayerPrefs.GetFloat("MusicVolume");
             }
         }
     }
 
-    public void OffSounds()
+    public void OffSound()
     {
         PlayerPrefs.SetFloat("SoundVolume", 0f);
 
         foreach (Sound s in sounds)
         {
-            if (s.name != "Music")
+            if (s.name == "Theme")
             {
-                s.source.Volume = s.volume = PlayerPrefs.GetFloat("SoundVolume");
+                continue;
+            }
+            else
+            {
+                s.source.volume = s.volume = PlayerPrefs.GetFloat("SoundVolume");
+            }
+        }
+    }
+
+    public void OnSound()
+    {
+        PlayerPrefs.SetFloat("SoundVolume", 1f);
+
+        foreach (Sound s in sounds)
+        {
+            if (s.name == "Theme")
+            {
+                continue;
+            }
+            else
+            {
+                s.source.volume = s.volume = PlayerPrefs.GetFloat("SoundVolume");
             }
         }
     }

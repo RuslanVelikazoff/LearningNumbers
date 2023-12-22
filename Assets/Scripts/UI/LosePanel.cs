@@ -17,6 +17,8 @@ public class LosePanel : MonoBehaviour
 
     private AnimationUI animations = new AnimationUI();
 
+    public InterstitialAds ad;
+
     private void Start()
     {
         ButtonClickAction();
@@ -24,7 +26,7 @@ public class LosePanel : MonoBehaviour
 
     public void OpenPanel()
     {
-        AudioManager.Instance.PlaySound("Lose");
+        AudioManager.Instance.Play("Lose");
         animations.OpenPanel(panelObject, losePanel);
     }
 
@@ -35,7 +37,8 @@ public class LosePanel : MonoBehaviour
             restartButton.onClick.RemoveAllListeners();
             restartButton.onClick.AddListener(() =>
             {
-                AudioManager.Instance.PlaySound("Click");
+                AudioManager.Instance.Play("Click");
+                ad.ShowAd();
                 SceneManager.LoadScene(1);
             });
         }
@@ -45,7 +48,7 @@ public class LosePanel : MonoBehaviour
             exitButton.onClick.RemoveAllListeners();
             exitButton.onClick.AddListener(() =>
             {
-                AudioManager.Instance.PlaySound("Click");
+                AudioManager.Instance.Play("Click");
                 SceneManager.LoadScene(0);
             });
         }

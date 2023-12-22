@@ -1,2 +1,0 @@
-Build path: /Users/user/Desktop/BuildProject/CompletedBuild3
-Build number: 147

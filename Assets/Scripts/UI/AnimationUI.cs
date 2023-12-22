@@ -7,7 +7,7 @@ public class AnimationUI
     [SerializeField]
     private float timePanelAnimation = .5f;
     [SerializeField]
-    private float timeButtonAnimation = .5f;
+    private float timeButtonAnimation = .3f;
 
     public void OpenPanel(GameObject panel, GameObject image)
     {
@@ -24,7 +24,7 @@ public class AnimationUI
     {
         Sequence sequence = DOTween.Sequence();
 
-        AudioManager.Instance.PlaySound("Click");
+        AudioManager.Instance.Play("Click");
 
         sequence.Append(button.transform.DOScale(new Vector3(.8f, .8f, 1f), timeButtonAnimation))
             .Append(button.transform.DOScale(new Vector3(1f, 1f, 1f), timeButtonAnimation));

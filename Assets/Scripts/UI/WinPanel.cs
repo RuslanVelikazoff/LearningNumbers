@@ -17,6 +17,8 @@ public class WinPanel : MonoBehaviour
 
     private AnimationUI animations = new AnimationUI();
 
+    public InterstitialAds ad;
+
     private void Start()
     {
         ButtonClickAction();
@@ -24,7 +26,7 @@ public class WinPanel : MonoBehaviour
 
     public void OpenPanel()
     {
-        AudioManager.Instance.PlaySound("Win");
+        AudioManager.Instance.Play("Win");
         animations.OpenPanel(panelObject, winPanel);
     }
 
@@ -35,7 +37,8 @@ public class WinPanel : MonoBehaviour
             continueButton.onClick.RemoveAllListeners();
             continueButton.onClick.AddListener(() =>
             {
-                AudioManager.Instance.PlaySound("Click");
+                AudioManager.Instance.Play("Click");
+                ad.ShowAd();
                 SceneManager.LoadScene(1);
             });
         }
@@ -45,7 +48,7 @@ public class WinPanel : MonoBehaviour
             exitButton.onClick.RemoveAllListeners();
             exitButton.onClick.AddListener(() =>
             {
-                AudioManager.Instance.PlaySound("Click");
+                AudioManager.Instance.Play("Click");
                 SceneManager.LoadScene(0);
             });
         }

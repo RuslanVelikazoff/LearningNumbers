@@ -95,11 +95,11 @@ public class LevelUIManager : MonoBehaviour
 
                 if (PlayerPrefs.GetFloat("SoundVolume") == 1f)
                 {
-                    AudioManager.Instance.OffSounds();
+                    AudioManager.Instance.OffSound();
                 }
                 else
                 {
-                    AudioManager.Instance.OnSounds();
+                    AudioManager.Instance.OnSound();
                 }
 
                 SetSprites();
